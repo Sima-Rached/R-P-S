@@ -6,75 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    <script>
-        let humanscore = 0;
-        let computerscore = 0;
+    <button id="rock">Rock</button>
+    <button id="paper">Paper</button>
+    <button id="scissors">Scissors</button>
+    <div id="result"></div>
+    <div id="score">You: 0 | Computer: 0</div>
+    <div id="winner"></div>
+        <script src="js-file.js"></script>
 
-        
-        function getComputerChoice(max=3) {
-            choice= Math.floor(Math.random() * max);
-            switch (choice) {
-                case 0:
-                    return "rock";
-                case 1:
-                    return "paper";
-                case 2:
-                    return "scissors";
-                default:
-                    return "an error occurred";
-            }
-            return choice;
-        }
-        function getHumanChoice() {
-            let input = prompt("Enter your choice (rock, paper, scissors):");
-            if (input === null) {
-                alert("Game cancelled.");
-                return null; // Exit if the user cancels
-            }
-            let choice = input.toLowerCase();
-            if (["rock", "paper", "scissors"].includes(choice)) {
-                return choice;
-            } else {
-                alert("Invalid choice. Please try again.");
-                return getHumanChoice();
-            }
-        }
-        function playRound(getComputerChoice, getHumanChoice) {
-            const computerChoice = getComputerChoice();
-            const humanChoice = getHumanChoice();
-            if (computerChoice === humanChoice) {
-                return "It's a tie!";
-            } else if (
-                (computerChoice === "rock" && humanChoice === "scissors") ||
-                (computerChoice === "paper" && humanChoice === "rock") ||
-                (computerChoice === "scissors" && humanChoice === "paper")
-            ) {
-                return `You lose! ${computerChoice} beats ${humanChoice}.`;
-            } else {
-                return `You win! ${humanChoice} beats ${computerChoice}.`;
-            }
-        }
-        function playGame(rounds=5) {
-            for (let i = 0; i < rounds; i++) {
-                const result = playRound(getComputerChoice, getHumanChoice);
-                console.log(result);
-                if (result.includes("You win")) {
-                    humanscore++;
-                } else if (result.includes("You lose")) {
-                    computerscore++;
-                }
-            }
-            console.log(`Final Score: You ${humanscore} - Computer ${computerscore}`);
-            if (humanscore > computerscore) {
-                console.log("Congratulations! You win the game!");
-            } else if (humanscore < computerscore) {
-                console.log("Sorry! You lose the game.");
-            } else {
-                console.log("It's a draw!");
-            }
-        }
-        playGame();
-
-    </script>
 </body>
 </html>
